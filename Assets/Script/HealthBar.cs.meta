@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8fee7c77b03690f4ca58dc728cda20de
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerHealth: {instanceID: 0}
+  - totalHealthbar: {instanceID: 0}
+  - currentHealthbar: {instanceID: 0}
+  - GameOver: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
