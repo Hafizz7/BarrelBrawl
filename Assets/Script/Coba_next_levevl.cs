@@ -8,13 +8,15 @@ public class Coba_next_levevl : MonoBehaviour
     public float delayTime = 1.5f;
     // Start is called before the first frame update
     public GameObject Complete;
-    public AudioSource audioSource;
-    public AudioSource AudioGameWin;
+    /*public AudioSource audioSource;*/
+    /*public AudioSource AudioGameWin;*/
     private bool isPaused = false;    
     void TogglePause()
     {
         isPaused = !isPaused; // Toggle status pause
-        audioSource.Pause();
+        /*audioSource.Pause();*/
+        /*SoundManager.Instance.MusicLevel1.Pause();*/
+        SoundManager.Instance.PauseMusic();
         Time.timeScale = isPaused ? 0 : 1; // Mengatur timescale menjadi 0 jika di-pause, 1 jika tidak
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,15 +28,12 @@ public class Coba_next_levevl : MonoBehaviour
             /*StartCoroutine(LoadSceneWithDelay());*/
             TogglePause();
             Complete.SetActive(true);
-            AudioGameWin.PlayOneShot(AudioGameWin.clip);
+            /*AudioGameWin.PlayOneShot(AudioGameWin.clip);*/
+            SoundManager.Instance.GameComplateSound();
             /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);*/
 
         }
-    }
-    void Start()
-    {
-        AudioGameWin.Pause();
-    }
+    }    
     /*IEnumerator LoadSceneWithDelay()
     {
         // Tunda beberapa detik sebelum memuat scene baru

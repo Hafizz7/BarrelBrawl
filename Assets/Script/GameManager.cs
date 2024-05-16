@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject GamePause;
     private bool isPaused = false;
-    public AudioSource audioSource;
+    /*public AudioSource audioSource;*/
     private static GameManager instance;
     public Vector2 lastCheckPointPos;
     void Start()
@@ -35,12 +35,14 @@ public class GameManager : MonoBehaviour
             {
                 GamePause.SetActive(false); // Matikan layar game over
                 TogglePause();
-                audioSource.Play();
+                /*audioSource.Play();*/
+                SoundManager.Instance.ResumeMusic();
 
             }
             else // Jika game over tidak aktif
             {
-                audioSource.Pause();
+                /*audioSource.Pause();*/
+                SoundManager.Instance.PauseMusic();
                 TogglePause();
                 GamePause.SetActive(true); // Tampilkan layar game over
             }

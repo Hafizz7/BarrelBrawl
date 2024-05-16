@@ -9,8 +9,17 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource BackgroundMusic;
     public AudioSource SoundEffect;
+    public AudioSource SoundJump;
+    public AudioSource SoundGameComplate;
+    public AudioSource SoundGameOverr;
 
     public AudioClip ButtonClick;
+    public AudioClip MusicLevel1;
+    public AudioClip MusicLevel2;
+    public AudioClip MusicLevel3;
+    // Tambahkan lebih banyak variabel AudioClip untuk arena lainnya jika diperlukan
+
+    private float pausedTime; // Menyimpan waktu musik dijeda
 
     private void Awake()
     {
@@ -39,24 +48,62 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 2)
-        {
-            BackgroundMusic.Pause();
-        }
+        PlayMusicForScene(scene.buildIndex);
     }
 
     private void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
-        if (newScene.buildIndex == 0)
+        PlayMusicForScene(newScene.buildIndex);
+    }
+
+    private void PlayMusicForScene(int sceneIndex)
+    {
+        AudioClip clipToPlay = null;
+
+        switch (sceneIndex)
+        {            
+            case 2:
+                clipToPlay = MusicLevel1;
+                break;
+            case 3:
+                clipToPlay = MusicLevel2;
+                break;
+            case 4:
+                clipToPlay = MusicLevel3;
+                break;
+            default:
+                clipToPlay = null;
+                break;
+        }
+
+        /*StopCurrentMusic();*/
+
+        if (clipToPlay != null)
         {
-            PlayBackgroundMusic();
+            PlayMusic(clipToPlay);
         }
     }
 
-    private void PlayBackgroundMusic()
+    private void StopCurrentMusic()
     {
-        if (BackgroundMusic != null && !BackgroundMusic.isPlaying)
+        if (BackgroundMusic.isPlaying)
         {
+            BackgroundMusic.Stop();
+        }
+    }
+
+    private void PlayMusic(AudioClip clip)
+    {
+        if (BackgroundMusic.clip != clip)
+        {
+            BackgroundMusic.Stop();
+            BackgroundMusic.clip = clip;
+            BackgroundMusic.Play();
+        }
+        else
+        {
+            // Memulai kembali dari waktu terakhir jika musik masih berada di clip yang sama
+            BackgroundMusic.time = pausedTime;
             BackgroundMusic.Play();
         }
     }
@@ -64,5 +111,40 @@ public class SoundManager : MonoBehaviour
     public void ButtonSound()
     {
         SoundEffect.PlayOneShot(ButtonClick);
+    }
+
+    public void JumpSoundd()
+    {
+        SoundJump.PlayOneShot(SoundJump.clip);
+    }
+
+    public void GameComplateSound()
+    {
+        SoundGameComplate.PlayOneShot(SoundGameComplate.clip);
+    }
+
+    public void GameOverrSound()
+    {
+        SoundGameOverr.PlayOneShot(SoundGameOverr.clip);
+    }
+
+    // Metode untuk menjeda musik
+    public void PauseMusic()
+    {
+        if (BackgroundMusic.isPlaying)
+        {
+            BackgroundMusic.Pause();
+            pausedTime = BackgroundMusic.time; // Simpan waktu musik dijeda
+        }
+    }
+
+    // Metode untuk melanjutkan musik dari waktu terakhir
+    public void ResumeMusic()
+    {
+        if (!BackgroundMusic.isPlaying && BackgroundMusic.clip != null)
+        {
+            BackgroundMusic.Play();
+            BackgroundMusic.time = pausedTime; // Mulai kembali dari waktu terakhir yang disimpan
+        }
     }
 }

@@ -47,6 +47,7 @@ public class ResetLevell : MonoBehaviour
     {
         /*SceneManager.LoadScene("Level 1");*/
         SceneManager.LoadSceneAsync(0);
+        
     }
     public void BackButton()
     {

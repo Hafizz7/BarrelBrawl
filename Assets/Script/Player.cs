@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public AudioSource SoundEffect;
+    /*public AudioSource SoundEffect;*/
     private Rigidbody2D body;
     private new Collider2D collider;
     private Collider2D[] results;
@@ -73,7 +73,10 @@ public class Player : MonoBehaviour
         {
             direction = Vector2.up * jumpStrength;
             anim.SetTrigger("jump");
-            SoundEffect.PlayOneShot(SoundEffect.clip);
+            /*SoundEffect.PlayOneShot(SoundEffect.clip);*/
+            /*SoundManager.Instance.SoundJump.PlayOneShot;*/
+            /*SoundManager.Instance.SoundJump();*/
+            SoundManager.Instance.JumpSoundd();
 
         }
         else

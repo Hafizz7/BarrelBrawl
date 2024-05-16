@@ -15,8 +15,10 @@ public class Health : MonoBehaviour
     /*public GameObject GameComplate;*/
     private bool isPaused = false;
     /*private Vector3 spawnPoint;*/
-    public AudioSource audioSource;
-    public AudioSource AudioGameOver;
+
+    /*public AudioSource audioSource;*/
+
+    /*public AudioSource AudioGameOver;*/
     /*private CheckPoint lastCheckPoint;*/
     private Vector3 respawnPosition;
 
@@ -50,8 +52,10 @@ public class Health : MonoBehaviour
     {
         // Misalnya, pindah ke scene game over
         TogglePause();
-        audioSource.Pause();
-        AudioGameOver.PlayOneShot(AudioGameOver.clip);
+        SoundManager.Instance.PauseMusic();
+        /*audioSource.Pause();     */
+        /*AudioGameOver.PlayOneShot(AudioGameOver.clip);*/
+        SoundManager.Instance.GameOverrSound();
         GameOver.SetActive(true);
         /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);*/
     }
