@@ -20,7 +20,7 @@ public class Rino : MonoBehaviour
 
             if (transform.position == posisiAwal.position)
             {
-                FlipCharacter();
+                /*FlipCharacter();*/
                 movingUp = false;
             }
         }
@@ -30,7 +30,7 @@ public class Rino : MonoBehaviour
 
             if (transform.position == posisiAkhir.position)
             {
-                FlipCharacter();
+                /*FlipCharacter();*/
                 movingUp = true;
             }
         }

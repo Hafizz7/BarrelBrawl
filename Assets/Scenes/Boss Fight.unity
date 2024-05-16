@@ -143,8 +143,6 @@ MonoBehaviour:
   startingHealth: 3
   GameOver: {fileID: 0}
   GamePause: {fileID: 0}
-  audioSource: {fileID: 0}
-  AudioGameOver: {fileID: 0}
 --- !u!1001 &169705218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -643,7 +641,7 @@ Transform:
   m_GameObject: {fileID: 866845115}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.02, y: -3.06, z: -9.93195}
+  m_LocalPosition: {x: -9.1, y: -2.91, z: -9.93195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -759,7 +757,7 @@ Transform:
   m_GameObject: {fileID: 1240459050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.85, y: -3.05, z: -9.93195}
+  m_LocalPosition: {x: 7.48, y: -3.05, z: -9.93195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -809,8 +807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726909d8e4463834b8807586ec1e324c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posisiAwal: {fileID: 866845116}
-  posisiAkhir: {fileID: 1240459051}
+  posisiAwal: {fileID: 1240459051}
+  posisiAkhir: {fileID: 866845116}
   speed2: 2
 --- !u!1 &2012941205
 GameObject:
