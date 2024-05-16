@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
     public Vector2 lastCheckPointPos;
     void Start()
     {
-        
+
     }
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             /*DontDestroyOnLoad(instance);*/

@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
 
     public AudioSource BackgroundMusic;
+    public AudioSource Musicc;
     public AudioSource SoundEffect;
     public AudioSource SoundJump;
     public AudioSource SoundGameComplate;
@@ -19,7 +20,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip MusicLevel3;
     // Tambahkan lebih banyak variabel AudioClip untuk arena lainnya jika diperlukan
 
-    private float pausedTime; // Menyimpan waktu musik dijeda
+    public float pausedTime; // Menyimpan waktu musik dijeda
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        Musicc.Play();
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
     }
@@ -61,8 +63,9 @@ public class SoundManager : MonoBehaviour
         AudioClip clipToPlay = null;
 
         switch (sceneIndex)
-        {            
+        {
             case 2:
+                Musicc.Pause();
                 clipToPlay = MusicLevel1;
                 break;
             case 3:
@@ -75,8 +78,6 @@ public class SoundManager : MonoBehaviour
                 clipToPlay = null;
                 break;
         }
-
-        /*StopCurrentMusic();*/
 
         if (clipToPlay != null)
         {
@@ -143,8 +144,25 @@ public class SoundManager : MonoBehaviour
     {
         if (!BackgroundMusic.isPlaying && BackgroundMusic.clip != null)
         {
-            BackgroundMusic.Play();
             BackgroundMusic.time = pausedTime; // Mulai kembali dari waktu terakhir yang disimpan
+            BackgroundMusic.Play();
+        }
+    }
+
+    // Metode untuk kembali ke Home
+    public void GoToHome()
+    {
+        // Misalnya, Home adalah scene dengan indeks 0
+        SceneManager.LoadScene(0);
+    }
+
+    // Panggil metode ini ketika di Home untuk memutar musik
+    public void PlayHomeMusic()
+    {
+        // Asumsikan home menggunakan MusikLevel1 (atau bisa disesuaikan)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            PlayMusic(MusicLevel1);
         }
     }
 }

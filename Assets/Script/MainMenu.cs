@@ -9,24 +9,27 @@ public class MainMenu : MonoBehaviour
 {
     public Slider SliderBackgroundMusic;
     public Slider SliderSFXMusic;
-    
+
 
     public void SliderVolumeMusic()
     {
         SoundManager.Instance.BackgroundMusic.volume = SliderBackgroundMusic.value;
-        
+        SoundManager.Instance.Musicc.volume = SliderBackgroundMusic.value;
+
 
         if (SliderBackgroundMusic.value == SliderBackgroundMusic.minValue)
         {
             SoundManager.Instance.BackgroundMusic.mute = true;
-            
+            SoundManager.Instance.Musicc.mute = true;
+
 
 
         }
         else
         {
             SoundManager.Instance.BackgroundMusic.mute = false;
-            
+            SoundManager.Instance.Musicc.mute = false;
+
             ;
         }
     }

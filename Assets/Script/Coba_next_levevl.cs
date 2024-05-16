@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Coba_next_levevl : MonoBehaviour
-{    
+{
     public float delayTime = 1.5f;
     // Start is called before the first frame update
     public GameObject Complete;
     /*public AudioSource audioSource;*/
     /*public AudioSource AudioGameWin;*/
-    private bool isPaused = false;    
+    private bool isPaused = false;
     void TogglePause()
     {
         isPaused = !isPaused; // Toggle status pause
@@ -21,7 +21,7 @@ public class Coba_next_levevl : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         // Jika objek yang bersentuhan memiliki tag "Player"
         if (collision.CompareTag("Player"))
         {
@@ -33,7 +33,7 @@ public class Coba_next_levevl : MonoBehaviour
             /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);*/
 
         }
-    }    
+    }
     /*IEnumerator LoadSceneWithDelay()
     {
         // Tunda beberapa detik sebelum memuat scene baru
@@ -43,4 +43,3 @@ public class Coba_next_levevl : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }*/
 }
-

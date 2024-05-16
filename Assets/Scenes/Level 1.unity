@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 35123688}
-  countDown: 10
-  spedd: 8
+  countDown: 40
+  spedd: 20
   health: {fileID: 1340338680}
 --- !u!1001 &42287522
 PrefabInstance:
@@ -4889,11 +4889,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1846619954}
-  - {fileID: 1680479607}
+  - {fileID: 1358038413}
   - {fileID: 345330813}
   - {fileID: 695774636}
+  - {fileID: 1680479607}
   - {fileID: 1252117589}
-  - {fileID: 1358038413}
   - {fileID: 409018330}
   - {fileID: 1631980956}
   - {fileID: 1763853780}

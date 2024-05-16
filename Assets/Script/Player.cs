@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
-       
+
     }
 
     private void FixedUpdate()

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth = 4f;
-    public float currentHealth { get; private set; }    
+    public float currentHealth { get; private set; }
     /*public Transform spawnPoint;*/
     public GameObject GameOver;
     public GameObject GamePause;
@@ -38,9 +38,9 @@ public class Health : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
-        if (currentHealth <= 0) 
-        {            
-            GameOverr();            
+        if (currentHealth <= 0)
+        {
+            GameOverr();
         }
         else
         {
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour
         *//*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);*//*
     }*/
 
-    
+
 
     void TogglePause()
     {
