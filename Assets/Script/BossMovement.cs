@@ -4,75 +4,118 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-    public class Boss : MonoBehaviour
+    // Movement settings
+    public float moveSpeed = 2f;
+    public float dashInterval = 5f;
+    public float dashForce = 10f;
+    private Rigidbody2D rb;
+    private float nextDashTime;
+
+    // Health settings
+    public int maxHealth = 100;
+    private int currentHealth;
+
+    // Movement direction
+    private Vector2 moveDirection = Vector2.right;
+    private Animator animator;
+
+    private bool isDashing = false;
+
+    // Player reference
+    private Collider2D playerCollider;
+
+    private void Start()
     {
-        public float moveSpeed = 2f;
-        public float dashSpeed = 10f;
-        public float dashDuration = 1f;
-        public float dashCooldown = 5f;
-        public Transform[] movePoints;
+        rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
+        nextDashTime = Time.time + dashInterval;
+        animator = GetComponent<Animator>();
 
-        private int currentPointIndex = 0;
-        private bool isDashing = false;
-        private float dashTime = 0f;
-        private float dashCooldownTime = 0f;
-        private Transform player;
+        // Find player by tag (assuming there's only one player in the scene)
+        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+    }
 
-        void Start()
+    private void Update()
+    {
+        // Regular movement
+        if (!isDashing)
         {
-            if (movePoints.Length > 0)
-            {
-                transform.position = movePoints[0].position;
-            }
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+            animator.SetBool("IsWalking", true);
         }
 
-        void Update()
+        // Dashing Mechanism
+        if (Time.time >= nextDashTime)
         {
-            if (isDashing)
-            {
-                Dash();
-            }
-            else
-            {
-                MoveBackAndForth();
-                if (Time.time >= dashCooldownTime)
-                {
-                    StartDash();
-                }
-            }
+            StartCoroutine(Dash());
+            nextDashTime = Time.time + dashInterval;
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        animator.SetTrigger("Attacking"); // Trigger attack animation
+
+        // Apply dash force
+        rb.velocity = new Vector2(moveDirection.x * dashForce, rb.velocity.y);
+
+        // Wait for the dash duration (adjust as needed)
+        yield return new WaitForSeconds(0.5f);
+
+        isDashing = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            // Change direction on wall collision
+            moveDirection = -moveDirection;
+            transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Revert the NPC back to dynamic to allow movement
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log($"NPC Health: {currentHealth}");
+        if (currentHealth <= 0)
+        {
+            // Handle NPC death (e.g., play animation, destroy NPC, etc.)
+            Destroy(gameObject);
         }
 
-        void MoveBackAndForth()
-        {
-            if (movePoints.Length == 0) return;
+        // Trigger the 'Damaged' animation and stop movement for a while
+        animator.SetTrigger("Damaged");
+        rb.velocity = Vector2.zero;
+        StartCoroutine(StopMovementTemporarily(1f)); // Adjust the duration as needed
 
-            Transform targetPoint = movePoints[currentPointIndex];
-            transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, moveSpeed * Time.deltaTime);
+        // Temporarily disable collision with the player
+        StartCoroutine(DisableCollisionWithPlayer(1f)); // Adjust the duration as needed
+    }
 
-            if (Vector2.Distance(transform.position, targetPoint.position) < 0.1f)
-            {
-                currentPointIndex = (currentPointIndex + 1) % movePoints.Length;
-            }
-        }
+    private IEnumerator StopMovementTemporarily(float duration)
+    {
+        float originalSpeed = moveSpeed;
+        moveSpeed = 0;
+        yield return new WaitForSeconds(duration);
+        moveSpeed = originalSpeed;
+    }
 
-        void StartDash()
-        {
-            isDashing = true;
-            dashTime = Time.time + dashDuration;
-        }
-
-        void Dash()
-        {
-            if (player == null) return;
-
-            transform.position = Vector2.MoveTowards(transform.position, player.position, dashSpeed * Time.deltaTime);
-
-            if (Time.time >= dashTime)
-            {
-                isDashing = false;
-                dashCooldownTime = Time.time + dashCooldown;
-            }
-        }
+    private IEnumerator DisableCollisionWithPlayer(float duration)
+    {
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), playerCollider, true);
+        yield return new WaitForSeconds(duration);
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), playerCollider, false);
     }
 }
