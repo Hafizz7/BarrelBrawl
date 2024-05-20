@@ -27,7 +27,8 @@ public class ResetLevell : MonoBehaviour
     }
     public void NextLevel()
     {
-        TogglePause();        
+        TogglePause();
+        SoundManager.Instance.BackgroundMusic.pitch = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
 

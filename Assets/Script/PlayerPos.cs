@@ -30,6 +30,7 @@ public class PlayerPos : MonoBehaviour
     public void Restart()
     {
         TogglePause();
+        SoundManager.Instance.BackgroundMusic.pitch = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         ReturnToInitialSpawn();
         

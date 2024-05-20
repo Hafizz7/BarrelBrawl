@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource BackgroundMusic;
     public AudioSource Musicc;
-    public AudioSource SoundEffect;
+    public AudioSource SoundEffect;    
     public AudioSource SoundJump;
     public AudioSource SoundGameComplate;
     public AudioSource SoundGameOverr;
