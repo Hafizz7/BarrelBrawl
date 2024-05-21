@@ -48,6 +48,16 @@ public class Health : MonoBehaviour
             Respawn();
         }
     }
+
+    public void TakeDamageBoss(float _damage)
+    {
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+
+        if (currentHealth <= 0)
+        {
+            GameOverr();
+        }
+    }
     public void GameOverr()
     {
         // Misalnya, pindah ke scene game over

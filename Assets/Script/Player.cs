@@ -14,7 +14,10 @@ public class Player : MonoBehaviour
     private bool grounded;
     private bool climbing;
     private Animator anim;
+    private bool isImmune = false;
     [SerializeField] private float damageBarrel;
+    private SpriteRenderer spriteRenderer;
+
 
     private void Awake()
     {
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
         collider = GetComponent<Collider2D>();
         results = new Collider2D[4];
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void CheckCollision()
@@ -94,12 +98,10 @@ public class Player : MonoBehaviour
             anim.SetBool("running", false);
         }
 
-
         if (grounded)
         {
             direction.y = Mathf.Max(direction.y, -1f);
         }
-
 
         if (direction.x > 0f)
         {
@@ -109,7 +111,6 @@ public class Player : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
-
     }
 
     private void FixedUpdate()
@@ -117,7 +118,35 @@ public class Player : MonoBehaviour
         body.MovePosition(body.position + direction * Time.fixedDeltaTime);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boss") && !isImmune)
+        {
+            GetComponent<Health>().TakeDamageBoss(1);
+            StartCoroutine(BecomeImmune());
+            StartCoroutine(Blink());
+        }
+    }
 
+    private IEnumerator BecomeImmune()
+    {
+        isImmune = true;
+        Physics2D.IgnoreCollision(collider, GameObject.FindGameObjectWithTag("Boss").GetComponent<Collider2D>(), true);
+        yield return new WaitForSeconds(2);
+        Physics2D.IgnoreCollision(collider, GameObject.FindGameObjectWithTag("Boss").GetComponent<Collider2D>(), false);
+        isImmune = false;
+    }
 
-
+    private IEnumerator Blink()
+    {
+        float duration = 1f; // Blinking duration in seconds
+        float blinkTime = 0.1f; // Time interval between blinks
+        float endTime = Time.time + duration;
+        while (Time.time < endTime)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            yield return new WaitForSeconds(blinkTime);
+        }
+        spriteRenderer.enabled = true; // Ensure sprite is visible when done blinking
+    }
 }

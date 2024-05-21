@@ -8,6 +8,7 @@ public class BossMovement : MonoBehaviour
     public float moveSpeed = 2f;
     public float dashInterval = 5f;
     public float dashForce = 10f;
+    public float jumpForce = 5f; // Add a jump force variable
     private Rigidbody2D rb;
     private float nextDashTime;
 
@@ -57,8 +58,8 @@ public class BossMovement : MonoBehaviour
         isDashing = true;
         animator.SetTrigger("Attacking"); // Trigger attack animation
 
-        // Apply dash force
-        rb.velocity = new Vector2(moveDirection.x * dashForce, rb.velocity.y);
+        // Apply dash force and jump force
+        rb.velocity = new Vector2(moveDirection.x * dashForce, jumpForce);
 
         // Wait for the dash duration (adjust as needed)
         yield return new WaitForSeconds(0.5f);
@@ -106,7 +107,7 @@ public class BossMovement : MonoBehaviour
 
     private IEnumerator StopMovementTemporarily(float duration)
     {
-        float originalSpeed = moveSpeed;
+        float originalSpeed = 1.5f;
         moveSpeed = 0;
         yield return new WaitForSeconds(duration);
         moveSpeed = originalSpeed;
