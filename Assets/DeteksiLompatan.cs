@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class DeteksiLompatan : MonoBehaviour
@@ -24,6 +25,10 @@ public class DeteksiLompatan : MonoBehaviour
             ScoreManager.instance.AddScore(1);
             // Nonaktifkan collider agar tidak bisa digunakan lagi
             GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            UnityEngine.Debug.Log("ScoreManager instance is null");
         }
     }
 }

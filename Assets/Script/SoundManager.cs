@@ -69,9 +69,11 @@ public class SoundManager : MonoBehaviour
                 clipToPlay = MusicLevel1;
                 break;
             case 3:
+                Musicc.Pause();
                 clipToPlay = MusicLevel2;
                 break;
             case 4:
+                Musicc.Pause();
                 clipToPlay = MusicLevel3;
                 break;
             default:

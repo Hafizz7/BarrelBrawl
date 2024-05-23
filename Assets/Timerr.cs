@@ -2,44 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Diagnostics;
 
 public class Timer : MonoBehaviour
 {
+    
+    public static Timer Instance { get; private set; } 
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float countDown;
+    public int bonusScorePerSecond = 2;    
     public float spedd;
     public Health health;
     private bool isPaused = false;
     private bool isGameOver = false; // Tambahkan variabel untuk menandai status game over
-
-    /*public AudioSource audioSource;*/
-    /*public AudioClip audioClip;*/
     private bool isAudioSpeedUp = false;
-
-    /*void Start()
+    public bool gameAkhir = false;
+    void Awake()
     {
-        // Ambil komponen AudioSource jika belum ada
-        if (audioSource == null)
+        if (Instance == null)
         {
-            audioSource = GetComponent<AudioSource>();
+            Instance = this;
         }
-
-        // Tetapkan audioClip jika belum ada
-        *//*if (audioClip != null)
+        else
         {
-            audioSource.clip = audioClip;
-        }*//*
-
-        // Mainkan audio secara looping
-        audioSource.loop = true;
-        audioSource.Play();
-    }*/
-
+            Destroy(gameObject);
+        }
+        bonusScorePerSecond = 2;
+        UnityEngine.Debug.Log("Initial Bonus Score per Second: " + bonusScorePerSecond);
+    }
     void Update()
     {
         if (!isGameOver) // Pastikan bahwa perhitungan waktu hanya dilakukan jika permainan belum berakhir
-        {
-            countDown -= Time.deltaTime;
+        {            
+            countDown -= Time.deltaTime;            
+            /*UnityEngine.Debug.Log("CalculateBonusScore called: countDown = " + countDown);*/
             if (countDown < spedd && !isAudioSpeedUp)
             {
 
@@ -49,7 +45,7 @@ public class Timer : MonoBehaviour
             }
 
             if (countDown <= 0)
-            {
+            {                
                 countDown = 0; // Pastikan waktu tidak negatif
                 TogglePause(); // Panggil TogglePause sebelum memanggil TakeDamage
                 health.TakeDamage(health.currentHealth); // Menghabiskan semua nyawa
@@ -57,17 +53,26 @@ public class Timer : MonoBehaviour
                 timerText.text = "00:00"; // Atur teks timer menjadi "00:00"
             }
             else
-            {
+            {                
                 int minutes = Mathf.FloorToInt(countDown / 60);
                 int seconds = Mathf.FloorToInt(countDown % 60);
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
+            /*if(Coba_next_levevl.Instance.GameAkhir == true)
+            {
+                AddBonusScore();
+            }*/
         }
-    }
-
+    }    
     void TogglePause()
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0 : 1;
+    }
+    public void AddBonusScore()
+    {
+        int bonusScore = Mathf.FloorToInt(countDown * bonusScorePerSecond);
+        UnityEngine.Debug.Log("Waktu: " + countDown + "Bonus: " + bonusScorePerSecond); 
+        ScoreManager.instance.AddScore(bonusScore);
     }
 }
