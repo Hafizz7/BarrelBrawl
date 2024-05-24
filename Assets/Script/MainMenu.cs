@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Threading;
+using System.Diagnostics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -67,5 +68,10 @@ public class MainMenu : MonoBehaviour
     public void ButtonClick()
     {
         SoundManager.Instance.ButtonSound();
+    }
+    public void ResetAllPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();        
     }
 }

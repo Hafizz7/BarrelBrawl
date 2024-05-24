@@ -35,6 +35,14 @@ public class PlayerPos : MonoBehaviour
         ReturnToInitialSpawn();
         
     }
+    public void RestartBoss()
+    {
+        TogglePause();
+        SoundManager.Instance.BackgroundMusic.pitch = 1.0f;
+        SceneManager.LoadScene(6);
+        ReturnToInitialSpawn();
+
+    }
     void ReturnToInitialSpawn()
     {
         // Mengatur posisi pemain kembali ke titik awal spawn
