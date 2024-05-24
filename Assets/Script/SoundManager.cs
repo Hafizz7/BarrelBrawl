@@ -18,6 +18,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip MusicLevel1;
     public AudioClip MusicLevel2;
     public AudioClip MusicLevel3;
+    public AudioClip MusicLevel4;
+    public AudioClip MusicLevel5;
     // Tambahkan lebih banyak variabel AudioClip untuk arena lainnya jika diperlukan
 
     public float pausedTime; // Menyimpan waktu musik dijeda
@@ -63,7 +65,7 @@ public class SoundManager : MonoBehaviour
         AudioClip clipToPlay = null;
 
         switch (sceneIndex)
-        {
+        {            
             case 2:
                 Musicc.Pause();
                 clipToPlay = MusicLevel1;
@@ -75,6 +77,14 @@ public class SoundManager : MonoBehaviour
             case 4:
                 Musicc.Pause();
                 clipToPlay = MusicLevel3;
+                break;
+            case 5:
+                Musicc.Pause();
+                clipToPlay = MusicLevel4;
+                break;
+            case 6:
+                Musicc.Pause();
+                clipToPlay = MusicLevel5;
                 break;
             default:
                 clipToPlay = null;

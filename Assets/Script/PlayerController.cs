@@ -9,7 +9,11 @@ public class PlayerController : MonoBehaviour
     private bool Lv2Complate;
     private bool Lv3Complate;
     private bool Lv4Complate;
-    private bool Lv5Complate;
+    private bool Lv5Complate;    
+    public GameObject KunciArenalv2;
+    public GameObject KunciArenalv3;
+    public GameObject KunciArenalv4;
+    public GameObject KunciArenalv5;    
 
     void Awake()
     {
@@ -19,16 +23,35 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            /*Destroy(gameObject);*/
         }
+        
 
         // Mendapatkan status level yang telah selesai dari PlayerPrefs
         Lv2Complate = PlayerPrefs.GetInt("Lv2Complate", 0) == 1;
         Lv3Complate = PlayerPrefs.GetInt("Lv3Complate", 0) == 1;
         Lv4Complate = PlayerPrefs.GetInt("Lv4Complate", 0) == 1;
         Lv5Complate = PlayerPrefs.GetInt("Lv5Complate", 0) == 1;
+        if (Lv2Complate)
+        {
+            KunciArenalv2.SetActive(false);
+        }
+        if (Lv3Complate)
+        {
+            KunciArenalv3.SetActive(false);
+        }
+        if (Lv4Complate)
+        {
+            KunciArenalv4.SetActive(false);
+        }
+        if (Lv5Complate)
+        {
+            KunciArenalv5.SetActive(false);
+        }        
     }
-
+    
+        
+    
     void TogglePause()
     {
 
@@ -57,7 +80,8 @@ public class PlayerController : MonoBehaviour
     public void Level2()
     {
         if(Lv2Complate)
-        {
+        {            
+            KunciArenalv2.SetActive(false);
             TogglePause();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }                

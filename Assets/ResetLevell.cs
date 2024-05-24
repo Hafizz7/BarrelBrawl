@@ -42,6 +42,7 @@ public class ResetLevell : MonoBehaviour
     public void Back()
     {
         /*SceneManager.LoadScene("Level 1");*/
+        SoundManager.Instance.Musicc.Play();
         SceneManager.LoadSceneAsync(1);
     }
     public void Home()

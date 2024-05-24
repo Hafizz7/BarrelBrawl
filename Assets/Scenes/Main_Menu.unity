@@ -155,6 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8864be16c50959b449997ceba93eb6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KunciArenalv2: {fileID: 242289615}
+  KunciArenalv3: {fileID: 242289615}
+  KunciArenalv4: {fileID: 242289615}
+  KunciArenalv5: {fileID: 242289615}
 --- !u!114 &15871456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +636,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229206265}
   m_CullTransparentMesh: 1
+--- !u!1 &242289615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242289616}
+  m_Layer: 0
+  m_Name: JgnDihapus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242289616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242289615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.214443, y: -2.9991639, z: 1652.5625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246679490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8864be16c50959b449997ceba93eb6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KunciArenalv2: {fileID: 242289615}
+  KunciArenalv3: {fileID: 242289615}
+  KunciArenalv4: {fileID: 242289615}
+  KunciArenalv5: {fileID: 242289615}
 --- !u!1 &462520564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8864be16c50959b449997ceba93eb6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KunciArenalv2: {fileID: 0}
+  KunciArenalv3: {fileID: 0}
+  KunciArenalv4: {fileID: 0}
+  KunciArenalv5: {fileID: 0}
 --- !u!1 &549314387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,6 +3370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8864be16c50959b449997ceba93eb6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KunciArenalv2: {fileID: 242289615}
+  KunciArenalv3: {fileID: 242289615}
+  KunciArenalv4: {fileID: 242289615}
+  KunciArenalv5: {fileID: 242289615}
 --- !u!114 &1302487908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5303,6 +5350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8864be16c50959b449997ceba93eb6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KunciArenalv2: {fileID: 242289615}
+  KunciArenalv3: {fileID: 242289615}
+  KunciArenalv4: {fileID: 242289615}
+  KunciArenalv5: {fileID: 242289615}
 --- !u!1 &2129431949
 GameObject:
   m_ObjectHideFlags: 0
@@ -5473,15 +5524,23 @@ PrefabInstance:
     - target: {fileID: 1519507113078710092, guid: 25f11db496b26574abc7a99a7a41f299, type: 3}
       propertyPath: MusicLevel1
       value: 
-      objectReference: {fileID: 8300000, guid: e525d3fc2306df448a1bb1c37320f49a, type: 3}
+      objectReference: {fileID: 8300000, guid: 9aed1e491fdfba94aa18796aac00581c, type: 3}
     - target: {fileID: 1519507113078710092, guid: 25f11db496b26574abc7a99a7a41f299, type: 3}
       propertyPath: MusicLevel2
       value: 
-      objectReference: {fileID: 8300000, guid: e525d3fc2306df448a1bb1c37320f49a, type: 3}
+      objectReference: {fileID: 8300000, guid: 2a3dd13aaecd26c4cb741f57d0fe591e, type: 3}
     - target: {fileID: 1519507113078710092, guid: 25f11db496b26574abc7a99a7a41f299, type: 3}
       propertyPath: MusicLevel3
       value: 
-      objectReference: {fileID: 8300000, guid: e525d3fc2306df448a1bb1c37320f49a, type: 3}
+      objectReference: {fileID: 8300000, guid: 07d0e47776df22645bc7b56debc287c4, type: 3}
+    - target: {fileID: 1519507113078710092, guid: 25f11db496b26574abc7a99a7a41f299, type: 3}
+      propertyPath: MusicLevel4
+      value: 
+      objectReference: {fileID: 8300000, guid: e12aa60e00b8fee46bfc26b6514d5322, type: 3}
+    - target: {fileID: 1519507113078710092, guid: 25f11db496b26574abc7a99a7a41f299, type: 3}
+      propertyPath: MusicLevel5
+      value: 
+      objectReference: {fileID: 8300000, guid: b14f0bc495abe5940a60c0b36c0d77f1, type: 3}
     - target: {fileID: 2705362427828078281, guid: 25f11db496b26574abc7a99a7a41f299, type: 3}
       propertyPath: Loop
       value: 1
@@ -5518,3 +5577,4 @@ SceneRoots:
   - {fileID: 1302487911}
   - {fileID: 6976905836633696103}
   - {fileID: 1244490773}
+  - {fileID: 242289616}
