@@ -25,6 +25,9 @@ public class BossMovement : MonoBehaviour
     // Player reference
     private Collider2D playerCollider;
 
+    // Health bar reference
+    private BossHealth bossHealth;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +37,9 @@ public class BossMovement : MonoBehaviour
 
         // Find player by tag (assuming there's only one player in the scene)
         playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+
+        // Find the BossHealth component (make sure to assign the correct object in the inspector)
+        bossHealth = FindObjectOfType<BossHealth>();
     }
 
     private void Update()
@@ -95,6 +101,10 @@ public class BossMovement : MonoBehaviour
             // Handle NPC death (e.g., play animation, destroy NPC, etc.)
             Destroy(gameObject);
         }
+
+        // Update health bar
+        float healthFillAmount = (float)currentHealth / maxHealth;
+        bossHealth.UpdateHealthBar(healthFillAmount);
 
         // Trigger the 'Damaged' animation and stop movement for a while
         animator.SetTrigger("Damaged");
