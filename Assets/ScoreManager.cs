@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            /*DontDestroyOnLoad(gameObject);*/
             UnityEngine.Debug.Log("ScoreManager instance created");
         }
         else
@@ -58,10 +58,18 @@ public class ScoreManager : MonoBehaviour
         return score;
     }
 
-    void UpdateScoreText()
+    public void UpdateScoreText()
     {        
         /*int scoree = Timer.instance.CalculateBonusScore(); // Mengambil skor bonus dari StarManager*/
         scoreText.text = "Score: " + score; // 
         scoreLv1 = score;
+    }
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            score = PlayerPrefs.GetInt("ScoreLevel55", 0);
+            UpdateScoreText();
+        }
     }
 }

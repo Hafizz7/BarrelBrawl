@@ -370,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -227, y: 0}
+  m_AnchoredPosition: {x: -226.99997, y: 0}
   m_SizeDelta: {x: -1992, y: -892}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176170967
@@ -1508,9 +1508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 759080319}
-  countDown: 40
+  countDown: 60
   bonusScorePerSecond: 10
-  spedd: 20
+  spedd: 30
   health: {fileID: 1905722065}
   gameAkhir: 0
 --- !u!114 &759080319

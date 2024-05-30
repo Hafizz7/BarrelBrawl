@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
 {
     public Slider SliderBackgroundMusic;
     public Slider SliderSFXMusic;
+    void Awake()
+    {
+        /*SliderBackgroundMusic.value = PlayerPrefs.GetFloat("SliderBackgroundMusic",0);        
+        SliderSFXMusic.value = PlayerPrefs.GetFloat("SliderSFXMusic", 0);*/
+    }
 
 
     public void SliderVolumeMusic()
@@ -17,7 +22,10 @@ public class MainMenu : MonoBehaviour
         SoundManager.Instance.BackgroundMusic.volume = SliderBackgroundMusic.value;
         SoundManager.Instance.Musicc.volume = SliderBackgroundMusic.value;
 
+        
+        PlayerPrefs.SetFloat("SliderBackgroundMusic", SliderBackgroundMusic.value);
 
+        
         if (SliderBackgroundMusic.value == SliderBackgroundMusic.minValue)
         {
             SoundManager.Instance.BackgroundMusic.mute = true;
@@ -37,6 +45,9 @@ public class MainMenu : MonoBehaviour
 
     public void SliderVolumeSFX()
     {
+        PlayerPrefs.SetFloat("SliderSFXMusic", SliderSFXMusic.value);
+        UnityEngine.Debug.Log(SliderSFXMusic.value);
+
         SoundManager.Instance.SoundEffect.volume = SliderSFXMusic.value;
         SoundManager.Instance.SoundJump.volume = SliderSFXMusic.value;
         SoundManager.Instance.SoundGameComplate.volume = SliderSFXMusic.value;
@@ -63,6 +74,8 @@ public class MainMenu : MonoBehaviour
     {
         SliderBackgroundMusic.value = SoundManager.Instance.BackgroundMusic.volume;
         SliderSFXMusic.value = SoundManager.Instance.SoundEffect.volume;
+        SliderBackgroundMusic.value = PlayerPrefs.GetFloat("SliderBackgroundMusic", 0);
+        SliderSFXMusic.value = PlayerPrefs.GetFloat("SliderSFXMusic", 0);
     }
 
     public void ButtonClick()
@@ -71,7 +84,9 @@ public class MainMenu : MonoBehaviour
     }
     public void ResetAllPlayerPrefs()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();        
+        PlayerPrefs.DeleteAll();        
+        PlayerPrefs.Save();
+        SliderBackgroundMusic.value = 1;
+        SliderSFXMusic.value = 1;
     }
 }

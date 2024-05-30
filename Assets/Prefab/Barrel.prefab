@@ -255,3 +255,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 3537628801119669781}
   offset: {x: 0, y: 0, z: 0}
+  score: 5

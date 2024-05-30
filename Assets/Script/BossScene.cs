@@ -12,6 +12,8 @@ public class BossScene: MonoBehaviour
         {
             // Load the "Boss_Fight" scene
             SceneManager.LoadScene(7);
+            ScoreManager.instance.UpdateScoreText();            
+            PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());
         }
     }
 }

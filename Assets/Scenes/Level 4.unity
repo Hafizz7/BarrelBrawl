@@ -3259,9 +3259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 658213443}
-  countDown: 40
+  countDown: 60
   bonusScorePerSecond: 10
-  spedd: 20
+  spedd: 30
   health: {fileID: 375158444}
   gameAkhir: 0
 --- !u!114 &658213443
@@ -9218,11 +9218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5927982129962984303, guid: 60873ddd9d67dd449a1abb6509e5000b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.11
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 5927982129962984303, guid: 60873ddd9d67dd449a1abb6509e5000b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.13
+      value: -4.67
       objectReference: {fileID: 0}
     - target: {fileID: 5927982129962984303, guid: 60873ddd9d67dd449a1abb6509e5000b, type: 3}
       propertyPath: m_LocalPosition.z

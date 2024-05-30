@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -27,12 +28,16 @@ public class Timer : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            countDown = PlayerPrefs.GetInt("waktuSave", 0);
+        }
         bonusScorePerSecond = 2;
         UnityEngine.Debug.Log("Initial Bonus Score per Second: " + bonusScorePerSecond);
     }
     void Update()
-    {
-        if (!isGameOver) // Pastikan bahwa perhitungan waktu hanya dilakukan jika permainan belum berakhir
+    {             
+            if (!isGameOver) // Pastikan bahwa perhitungan waktu hanya dilakukan jika permainan belum berakhir
         {            
             countDown -= Time.deltaTime;            
             /*UnityEngine.Debug.Log("CalculateBonusScore called: countDown = " + countDown);*/
@@ -72,6 +77,8 @@ public class Timer : MonoBehaviour
     public void AddBonusScore()
     {
         int bonusScore = Mathf.FloorToInt(countDown * bonusScorePerSecond);
+        int waktuSave = Mathf.FloorToInt(countDown);
+        PlayerPrefs.SetInt("waktuSave", waktuSave);
         UnityEngine.Debug.Log("Waktu: " + countDown + "Bonus: " + bonusScorePerSecond); 
         ScoreManager.instance.AddScore(bonusScore);
     }

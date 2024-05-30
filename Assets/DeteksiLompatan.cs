@@ -7,6 +7,7 @@ public class DeteksiLompatan : MonoBehaviour
 {
     public Transform barrel;  // Referensi ke objek tong
     public Vector3 offset;    // Offset posisi relatif terhadap tong
+    public int score;
 
     void Update()
     {
@@ -22,7 +23,7 @@ public class DeteksiLompatan : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ScoreManager.instance.AddScore(1);
+            ScoreManager.instance.AddScore(score);
             // Nonaktifkan collider agar tidak bisa digunakan lagi
             GetComponent<Collider2D>().enabled = false;
         }
