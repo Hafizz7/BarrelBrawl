@@ -10,7 +10,9 @@ public class BossScene: MonoBehaviour
         // Check if the player has entered the trigger
         if (other.gameObject.CompareTag("Player"))
         {
-            // Load the "Boss_Fight" scene
+            // Load the "Boss_Fight" scen
+            // 
+            Timer.Instance.SaveWaktu();
             SceneManager.LoadScene(7);
             ScoreManager.instance.UpdateScoreText();            
             PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());

@@ -77,9 +77,14 @@ public class Timer : MonoBehaviour
     public void AddBonusScore()
     {
         int bonusScore = Mathf.FloorToInt(countDown * bonusScorePerSecond);
-        int waktuSave = Mathf.FloorToInt(countDown);
-        PlayerPrefs.SetInt("waktuSave", waktuSave);
+        /*int waktuSave = Mathf.FloorToInt(countDown);
+        PlayerPrefs.SetInt("waktuSave", waktuSave);*/
         UnityEngine.Debug.Log("Waktu: " + countDown + "Bonus: " + bonusScorePerSecond); 
         ScoreManager.instance.AddScore(bonusScore);
+    }
+    public void SaveWaktu()
+    {
+        int waktuSave = Mathf.FloorToInt(countDown);
+        PlayerPrefs.SetInt("waktuSave", waktuSave);
     }
 }

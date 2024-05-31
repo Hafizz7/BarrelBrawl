@@ -28,14 +28,14 @@ public class StarSelectLevel : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+    /*    if (instance == null)
         {
             instance = this;
         }
         else
         {
             Destroy(gameObject);
-        }
+        }*/
         /*ScoreSelctLv1 = Coba_next_levevl.Instance.ScoreLevel11;
         ScoreSelctLv2 = Coba_next_levevl.Instance.ScoreLevel22;
         ScoreSelctLv3 = Coba_next_levevl.Instance.ScoreLevel33;

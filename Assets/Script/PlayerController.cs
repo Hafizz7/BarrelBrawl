@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController instance;
+    /*public static PlayerController instance;*/
     private bool Lv2Complate;
     private bool Lv3Complate;
     private bool Lv4Complate;
-    private bool Lv5Complate;    
+    private bool Lv5Complate;
+    
+    //Buat Gambar Kunci Level di Select Level
     public GameObject KunciArenalv2;
     public GameObject KunciArenalv3;
     public GameObject KunciArenalv4;
@@ -17,14 +19,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        /*if (instance == null)
         {
             instance = this;
         }
         else
         {
-            /*Destroy(gameObject);*/
-        }
+            *//*Destroy(gameObject);*//*
+        }*/
         
 
         // Mendapatkan status level yang telah selesai dari PlayerPrefs
@@ -72,6 +74,8 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+
+    //Select Level Pada Menu Select Level
     public void Level1()
     {
         TogglePause();
@@ -79,12 +83,12 @@ public class PlayerController : MonoBehaviour
     }
     public void Level2()
     {
-        if(Lv2Complate)
-        {            
+        if (Lv2Complate)
+        {
             KunciArenalv2.SetActive(false);
             TogglePause();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-        }                
+        }
     }
     public void Level3()
     {
@@ -110,6 +114,8 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
         }
     }
+
+    //Tombol Keluar di Bagian Main Menu
     public void Exit()
     {
         Application.Quit();

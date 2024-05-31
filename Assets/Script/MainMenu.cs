@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
     public void SliderVolumeSFX()
     {
         PlayerPrefs.SetFloat("SliderSFXMusic", SliderSFXMusic.value);
-        UnityEngine.Debug.Log(SliderSFXMusic.value);
+        /*UnityEngine.Debug.Log(SliderSFXMusic.value);*/
 
         SoundManager.Instance.SoundEffect.volume = SliderSFXMusic.value;
         SoundManager.Instance.SoundJump.volume = SliderSFXMusic.value;
@@ -72,10 +72,11 @@ public class MainMenu : MonoBehaviour
 
     public void Start()
     {
-        SliderBackgroundMusic.value = SoundManager.Instance.BackgroundMusic.volume;
-        SliderSFXMusic.value = SoundManager.Instance.SoundEffect.volume;
         SliderBackgroundMusic.value = PlayerPrefs.GetFloat("SliderBackgroundMusic", 0);
         SliderSFXMusic.value = PlayerPrefs.GetFloat("SliderSFXMusic", 0);
+        SliderBackgroundMusic.value = SoundManager.Instance.BackgroundMusic.volume;
+        SliderSFXMusic.value = SoundManager.Instance.SoundEffect.volume;
+        
     }
 
     public void ButtonClick()
@@ -84,9 +85,11 @@ public class MainMenu : MonoBehaviour
     }
     public void ResetAllPlayerPrefs()
     {
-        PlayerPrefs.DeleteAll();        
-        PlayerPrefs.Save();
+        PlayerPrefs.DeleteAll();                
         SliderBackgroundMusic.value = 1;
         SliderSFXMusic.value = 1;
+        PlayerPrefs.Save();
+        PlayerPrefs.SetFloat("SliderSFXMusic", 1);
+        PlayerPrefs.SetFloat("SliderBackgroundMusic", 1);
     }
 }

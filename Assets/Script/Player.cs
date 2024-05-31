@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +19,10 @@ public class Player : MonoBehaviour
     private bool isImmune = false;
     [SerializeField] private float damageBarrel;
     private SpriteRenderer spriteRenderer;
+    private KeyCode[] kombinasi = { KeyCode.Alpha5, KeyCode.Alpha5, KeyCode.Alpha2 };
+    private int currentCombinationIndex = 0;
+
+    
 
 
     private void Awake()
@@ -67,6 +73,25 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             GetComponent<Health>().TakeDamage(1);
+        }
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetKeyDown(kombinasi[currentCombinationIndex]))
+            {
+                currentCombinationIndex++;
+                if (currentCombinationIndex >= kombinasi.Length)
+                {
+                    // Kombinasi lengkap, panggil fungsi
+                    CheatNextLevel();
+                    currentCombinationIndex = 0; // Reset indeks setelah kombinasi ditekan                    
+                }
+            }
+            else
+            {
+                // Reset indeks jika urutan kombinasi salah
+                currentCombinationIndex = 0;
+            }
+
         }
         CheckCollision();
         if (climbing)
@@ -125,7 +150,7 @@ public class Player : MonoBehaviour
             GetComponent<Health>().TakeDamageBoss(1);
             StartCoroutine(BecomeImmune());
             StartCoroutine(Blink());
-        }
+        }        
     }
 
     private IEnumerator BecomeImmune()
@@ -148,5 +173,16 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(blinkTime);
         }
         spriteRenderer.enabled = true; // Ensure sprite is visible when done blinking
+    }
+    public void CheatNextLevel()
+    {
+        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (activeSceneIndex == 6)
+        {
+            SceneManager.LoadScene(7);
+            Timer.Instance.SaveWaktu();
+            ScoreManager.instance.UpdateScoreText();
+            PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());
+        }
     }
 }

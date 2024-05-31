@@ -13,10 +13,7 @@ public class Coba_next_levevl : MonoBehaviour
     public int maxScore;*/
     public float delayTime = 1.5f;
     // Start is called before the first frame update
-    public GameObject Complete;
-    /*public float waktuku;*/
-    /*public AudioSource audioSource;*/
-    /*public AudioSource AudioGameWin;*/
+    public GameObject Complete;    
     private bool isPaused = false;
     public bool Lv1Complate = false;
     public bool Lv2Complate = false;
@@ -56,24 +53,19 @@ public class Coba_next_levevl : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        /*if (Instance == null)
         {
             Instance = this;
         }
         else
         {
             Destroy(gameObject);
-        }
+        }*/
         Lv1Complate = IsLevelCompleted(1);
         Lv2Complate = IsLevelCompleted(2);
         Lv3Complate = IsLevelCompleted(3);
         Lv4Complate = IsLevelCompleted(4);
         Lv5Complate = IsLevelCompleted(5);
-        /*ScoreLevel11 = PlayerPrefs.GetInt("ScoreLevel11", 0);
-        ScoreLevel22 = PlayerPrefs.GetInt("ScoreLevel22", 0);
-        ScoreLevel33 = PlayerPrefs.GetInt("ScoreLevel33", 0);
-        ScoreLevel44 = PlayerPrefs.GetInt("ScoreLevel44", 0);
-        ScoreLevel55 = PlayerPrefs.GetInt("ScoreLevel55", 0);*/
     }
     void TogglePause()
     {
@@ -96,6 +88,7 @@ public class Coba_next_levevl : MonoBehaviour
             Complete.SetActive(true);
 
             SoundManager.Instance.GameComplateSound();
+            //Memanggil bonus score di Timer
             Timer.Instance.AddBonusScore();
             int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -156,8 +149,9 @@ public class Coba_next_levevl : MonoBehaviour
         // Pindah ke scene baru
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }*/
+
     private void SaveLevelCompletion(int level)
-    {
+    {        
         PlayerPrefs.SetInt("Level" + level + "Complete", 1); // 1 means the level is completed
         PlayerPrefs.Save(); // Save changes to disk
     }
@@ -165,7 +159,7 @@ public class Coba_next_levevl : MonoBehaviour
     {
         return PlayerPrefs.GetInt("Level" + level + "Complete", 0) == 1; // 0 means not completed
     }
-    private void CheatNextLevel()
+    public void CheatNextLevel()
     {
         TogglePause();
         Complete.SetActive(true);
