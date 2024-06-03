@@ -273,7 +273,7 @@ MonoBehaviour:
   timerText: {fileID: 35123688}
   countDown: 60
   bonusScorePerSecond: 10
-  spedd: 20
+  spedd: 30
   health: {fileID: 1340338680}
   gameAkhir: 0
 --- !u!1001 &42287522

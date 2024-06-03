@@ -3510,7 +3510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 658213443}
-  countDown: 110
+  countDown: 85
   bonusScorePerSecond: 10
   spedd: 40
   health: {fileID: 375158444}

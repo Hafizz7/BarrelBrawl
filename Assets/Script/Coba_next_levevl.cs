@@ -180,14 +180,17 @@ public class Coba_next_levevl : MonoBehaviour
             else if (activeSceneIndex == 7)
             {
                 int scoreku = PlayerPrefs.GetInt("ScoreLevel55", 0);
+                /*int scoreBoss = PlayerPrefs.GetInt("ScoreNextBoss", 0);*/
                 UnityEngine.Debug.Log("SCOREKUUU: " + ScoreLevel55);
                 SaveLevelCompletion(5);
                 int totalscore = ScoreLevel44 + ScoreManager.instance.GetScore();
-                if (scoreku <= totalscore)
+                int scoreAwal = ScoreManager.instance.GetScore();
+                PlayerPrefs.SetInt("ScoreNextBoss", totalscore);
+                if (totalscore > scoreku)
                 {
-                    PlayerPrefs.SetInt("ScoreLevel55", scoreku); // Simpan skor ke PlayerPrefs            
+                    PlayerPrefs.SetInt("ScoreLevel55", totalscore); // Simpan skor ke PlayerPrefs            
                 }
-                else if (scoreku == totalscore)
+                else if (totalscore == scoreku)
                 {
                     PlayerPrefs.SetInt("ScoreLevel55", totalscore); // Simpan skor ke PlayerPrefs            
                 }

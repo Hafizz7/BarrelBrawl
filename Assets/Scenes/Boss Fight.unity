@@ -2134,7 +2134,7 @@ MonoBehaviour:
   countDown: 0
   bonusScorePerSecond: 10
   spedd: 30
-  health: {fileID: 0}
+  health: {fileID: 57050043}
   gameAkhir: 0
 --- !u!114 &902850856
 MonoBehaviour:
