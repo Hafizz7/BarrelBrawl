@@ -1542,7 +1542,7 @@ Transform:
   m_GameObject: {fileID: 285185856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.36, y: -0.23, z: 0}
+  m_LocalPosition: {x: 17.36, y: -0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3427,7 +3427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 658213443}
-  countDown: 70
+  countDown: 100
   bonusScorePerSecond: 10
   spedd: 30
   health: {fileID: 375158444}
@@ -4820,7 +4820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -179.395, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 589.00006, y: 433.9999}
+  m_AnchoredPosition: {x: 589, y: 433.9999}
   m_SizeDelta: {x: 1117.302, y: 114.539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1126002408
@@ -6413,7 +6413,7 @@ Transform:
   m_GameObject: {fileID: 1554706336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.34, y: 3.26, z: 0}
+  m_LocalPosition: {x: -6.34, y: 3.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
