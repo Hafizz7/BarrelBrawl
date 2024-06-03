@@ -7107,6 +7107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePause: {fileID: 125297167}
+  GameComplate: {fileID: 2024365518}
+  GameOverr: {fileID: 889362434}
   lastCheckPointPos: {x: -12.14, y: -2.7}
 --- !u!224 &1919583032
 RectTransform:
@@ -7705,7 +7707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 2067435700}
-  countDown: 100
+  countDown: 60
   bonusScorePerSecond: 10
   spedd: 30
   health: {fileID: 1029652178}

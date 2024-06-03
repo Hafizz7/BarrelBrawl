@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject GamePause;
+    public GameObject GameComplate;
+    public GameObject GameOverr;
     private bool isPaused = false;
     /*public AudioSource audioSource;*/
     private static GameManager instance;
@@ -31,21 +33,28 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (GamePause.activeSelf) // Jika game over aktif
+            if (GameComplate.activeSelf || GameOverr.activeSelf)
             {
-                GamePause.SetActive(false); // Matikan layar game over
-                TogglePause();
-                /*audioSource.Play();*/
-                SoundManager.Instance.ResumeMusic();
 
-            }
-            else // Jika game over tidak aktif
+            }else
             {
-                /*audioSource.Pause();*/
-                SoundManager.Instance.PauseMusic();
-                TogglePause();
-                GamePause.SetActive(true); // Tampilkan layar game over
+                if (GamePause.activeSelf) // Jika game over aktif
+                {
+                    GamePause.SetActive(false); // Matikan layar game over
+                    TogglePause();
+                    /*audioSource.Play();*/
+                    SoundManager.Instance.ResumeMusic();
+
+                }
+                else // Jika game over tidak aktif
+                {
+                    /*audioSource.Pause();*/
+                    SoundManager.Instance.PauseMusic();
+                    TogglePause();
+                    GamePause.SetActive(true); // Tampilkan layar game over
+                }
             }
+            
         }
     }
     void TogglePause()

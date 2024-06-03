@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     /*public AudioSource SoundEffect;*/
+    public static Player Instance { get; private set; }
     private Rigidbody2D body;
     private new Collider2D collider;
     private Collider2D[] results;
@@ -182,7 +183,16 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(7);
             Timer.Instance.SaveWaktu();
             ScoreManager.instance.UpdateScoreText();
-            PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());
+            PlayerPrefs.SetInt("ScoreNextBoss", ScoreManager.instance.GetScore());
+            int scoreku = PlayerPrefs.GetInt("ScoreNextBoss", 0);
+            int bagags = ScoreLevel4();
+            UnityEngine.Debug.Log(bagags);
+
         }
+    }
+    public int ScoreLevel4()
+    {
+        int scoreku = ScoreManager.instance.GetScore(); 
+        return scoreku;
     }
 }

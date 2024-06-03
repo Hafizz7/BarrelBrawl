@@ -68,7 +68,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 7)
         {
-            score = PlayerPrefs.GetInt("ScoreLevel55", 0);
+            score = PlayerPrefs.GetInt("ScoreNextBoss", 0);
+            /*score = Player.Instance.ScoreLevel4();*/
             UpdateScoreText();
         }
     }

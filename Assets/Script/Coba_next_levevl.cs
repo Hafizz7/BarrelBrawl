@@ -66,6 +66,8 @@ public class Coba_next_levevl : MonoBehaviour
         Lv3Complate = IsLevelCompleted(3);
         Lv4Complate = IsLevelCompleted(4);
         Lv5Complate = IsLevelCompleted(5);
+        ScoreLevel55 = PlayerPrefs.GetInt("ScoreLevel55", 0); // Dapatkan skor dari PlayerPrefs
+        UnityEngine.Debug.Log("Awake: Initial ScoreLevel55: " + ScoreLevel55);
     }
     void TogglePause()
     {
@@ -91,50 +93,104 @@ public class Coba_next_levevl : MonoBehaviour
             //Memanggil bonus score di Timer
             Timer.Instance.AddBonusScore();
             int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
             if (activeSceneIndex == 2)
             {
 
-                Lv2Complate = true;                
+                Lv2Complate = true;
+                int score1 = ScoreManager.instance.GetScore();
+                int score2 = PlayerPrefs.GetInt("ScoreLevel11", ScoreManager.instance.GetScore());
                 PlayerPrefs.SetInt("Lv2Complate", Lv2Complate ? 1 : 0);
                 SaveLevelCompletion(1);
                 ScoreManager.instance.ScoreLevel1();
-                PlayerPrefs.SetInt("ScoreLevel11", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                UnityEngine.Debug.Log("INI LEVEL 1 : Scorenya2: " + ScoreManager.instance.GetScore());
+                UnityEngine.Debug.Log("INI LEVEL 1 : Scorenya1: " + PlayerPrefs.GetInt("ScoreLevel11", ScoreManager.instance.GetScore()));
+                if (score2 < score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel11", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
+                else if (score2 == score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel11", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
                 ScoreLevel11 = PlayerPrefs.GetInt("ScoreLevel11", 0); // Dapatkan skor dari PlayerPrefs
-                UnityEngine.Debug.Log("INI LEVEL 1 : Scorenya: " + ScoreLevel11);
+
             }
             else if (activeSceneIndex == 3)
             {
                 Lv3Complate = true;
+                int score1 = ScoreManager.instance.GetScore();
+                int score2 = PlayerPrefs.GetInt("ScoreLevel22", ScoreManager.instance.GetScore());
                 PlayerPrefs.SetInt("Lv3Complate", Lv3Complate ? 1 : 0);
                 SaveLevelCompletion(2);
                 ScoreManager.instance.ScoreLevel2();
-                PlayerPrefs.SetInt("ScoreLevel22", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
-                ScoreLevel22 = PlayerPrefs.GetInt("ScoreLevel22", 0); // Dapatkan skor dari PlayerPrefs
-                UnityEngine.Debug.Log("INI level 2 : Scorenya : " + ScoreLevel22);
+                if (score2 < score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel22", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
+                else if (score2 == score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel22", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
+                ScoreLevel22 = PlayerPrefs.GetInt("ScoreLevel22", 0); // Dapatkan skor dari PlayerPrefs            
             }
             else if (activeSceneIndex == 4)
             {
-                Lv4Complate = true;                
+                Lv4Complate = true;
+                int score1 = ScoreManager.instance.GetScore();
+                int score2 = PlayerPrefs.GetInt("ScoreLevel33", ScoreManager.instance.GetScore());
                 PlayerPrefs.SetInt("Lv4Complate", Lv4Complate ? 1 : 0);
                 SaveLevelCompletion(3);
-                PlayerPrefs.SetInt("ScoreLevel33", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
-                ScoreLevel33 = PlayerPrefs.GetInt("ScoreLevel33", 0); // Dapatkan skor dari PlayerPrefs
-                UnityEngine.Debug.Log("INI level 3");
+                if (score2 < score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel33", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
+                else if (score2 == score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel33", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
+                ScoreLevel33 = PlayerPrefs.GetInt("ScoreLevel33", 0); // Dapatkan skor dari PlayerPrefs            
             }
             else if (activeSceneIndex == 5)
             {
-                Lv5Complate = true;                
+                Lv5Complate = true;
+                int score1 = ScoreManager.instance.GetScore();
+                int score2 = PlayerPrefs.GetInt("ScoreLevel44", ScoreManager.instance.GetScore());
                 PlayerPrefs.SetInt("Lv5Complate", Lv5Complate ? 1 : 0);
                 SaveLevelCompletion(4);
-                PlayerPrefs.SetInt("ScoreLevel44", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                if (score2 < score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel44", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
+                else if (score2 == score1)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel44", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                }
                 ScoreLevel44 = PlayerPrefs.GetInt("ScoreLevel44", 0); // Dapatkan skor dari PlayerPrefs
                 UnityEngine.Debug.Log("INI level 4");
-            }            
+            }
+            /*else if (activeSceneIndex == 6)
+            {
+                UnityEngine.Debug.Log("AKITFF OUUU");
+                *//*SceneManager.LoadScene(7);
+                ScoreManager.instance.UpdateScoreText();
+                PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());//
+                int scoroe1234 = PlayerPrefs.GetInt("ScoreLevel55", 0);
+                UnityEngine.Debug.Log("Total Score 1: " + scoroe1234);
+            }*/
             else if (activeSceneIndex == 7)
-            {                
+            {
+                int scoreku = PlayerPrefs.GetInt("ScoreLevel55", 0);
+                UnityEngine.Debug.Log("SCOREKUUU: " + ScoreLevel55);
                 SaveLevelCompletion(5);
-                PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+                int totalscore = ScoreLevel44 + ScoreManager.instance.GetScore();
+                if (scoreku <= totalscore)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel55", scoreku); // Simpan skor ke PlayerPrefs            
+                }
+                else if (scoreku == totalscore)
+                {
+                    PlayerPrefs.SetInt("ScoreLevel55", totalscore); // Simpan skor ke PlayerPrefs            
+                }
                 ScoreLevel55 = PlayerPrefs.GetInt("ScoreLevel55", 0); // Dapatkan skor dari PlayerPrefs
                 UnityEngine.Debug.Log("INI level 5");
             }
@@ -171,54 +227,106 @@ public class Coba_next_levevl : MonoBehaviour
         {
 
             Lv2Complate = true;
+            int score1 = ScoreManager.instance.GetScore();
+            int score2 = PlayerPrefs.GetInt("ScoreLevel11", ScoreManager.instance.GetScore());
             PlayerPrefs.SetInt("Lv2Complate", Lv2Complate ? 1 : 0);
             SaveLevelCompletion(1);
             ScoreManager.instance.ScoreLevel1();
-            PlayerPrefs.SetInt("ScoreLevel11", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            UnityEngine.Debug.Log("INI LEVEL 1 : Scorenya2: " + ScoreManager.instance.GetScore());
+            UnityEngine.Debug.Log("INI LEVEL 1 : Scorenya1: " + PlayerPrefs.GetInt("ScoreLevel11", ScoreManager.instance.GetScore()));
+            if (score2 < score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel11", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
+            else if (score2 == score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel11", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
             ScoreLevel11 = PlayerPrefs.GetInt("ScoreLevel11", 0); // Dapatkan skor dari PlayerPrefs
-            UnityEngine.Debug.Log("INI LEVEL 1 : Scorenya: " + ScoreLevel11);
+
         }
         else if (activeSceneIndex == 3)
         {
             Lv3Complate = true;
+            int score1 = ScoreManager.instance.GetScore();
+            int score2 = PlayerPrefs.GetInt("ScoreLevel22", ScoreManager.instance.GetScore());
             PlayerPrefs.SetInt("Lv3Complate", Lv3Complate ? 1 : 0);
             SaveLevelCompletion(2);
             ScoreManager.instance.ScoreLevel2();
-            PlayerPrefs.SetInt("ScoreLevel22", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
-            ScoreLevel22 = PlayerPrefs.GetInt("ScoreLevel22", 0); // Dapatkan skor dari PlayerPrefs
-            UnityEngine.Debug.Log("INI level 2 : Scorenya : " + ScoreLevel22);
+            if (score2 < score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel22", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
+            else if (score2 == score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel22", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
+            ScoreLevel22 = PlayerPrefs.GetInt("ScoreLevel22", 0); // Dapatkan skor dari PlayerPrefs            
         }
         else if (activeSceneIndex == 4)
         {
             Lv4Complate = true;
+            int score1 = ScoreManager.instance.GetScore();
+            int score2 = PlayerPrefs.GetInt("ScoreLevel33", ScoreManager.instance.GetScore());
             PlayerPrefs.SetInt("Lv4Complate", Lv4Complate ? 1 : 0);
             SaveLevelCompletion(3);
-            PlayerPrefs.SetInt("ScoreLevel33", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
-            ScoreLevel33 = PlayerPrefs.GetInt("ScoreLevel33", 0); // Dapatkan skor dari PlayerPrefs
-            UnityEngine.Debug.Log("INI level 3");
+            if (score2 < score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel33", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
+            else if (score2 == score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel33", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
+            ScoreLevel33 = PlayerPrefs.GetInt("ScoreLevel33", 0); // Dapatkan skor dari PlayerPrefs            
         }
         else if (activeSceneIndex == 5)
         {
             Lv5Complate = true;
+            int score1 = ScoreManager.instance.GetScore();
+            int score2 = PlayerPrefs.GetInt("ScoreLevel44", ScoreManager.instance.GetScore());
             PlayerPrefs.SetInt("Lv5Complate", Lv5Complate ? 1 : 0);
             SaveLevelCompletion(4);
-            PlayerPrefs.SetInt("ScoreLevel44", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            if (score2 < score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel44", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
+            else if (score2 == score1)
+            {
+                PlayerPrefs.SetInt("ScoreLevel44", ScoreManager.instance.GetScore()); // Simpan skor ke PlayerPrefs
+            }
             ScoreLevel44 = PlayerPrefs.GetInt("ScoreLevel44", 0); // Dapatkan skor dari PlayerPrefs
             UnityEngine.Debug.Log("INI level 4");
         }
-        else if (activeSceneIndex == 6)
+        /*else if (activeSceneIndex == 6)
         {
             UnityEngine.Debug.Log("AKITFF OUUU");
-            /*SceneManager.LoadScene(7);
+            *//*SceneManager.LoadScene(7);
             ScoreManager.instance.UpdateScoreText();
-            PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());*/
-        }
+            PlayerPrefs.SetInt("ScoreLevel55", ScoreManager.instance.GetScore());//
+            int scoroe1234 = PlayerPrefs.GetInt("ScoreLevel55", 0);
+            UnityEngine.Debug.Log("Total Score 1: " + scoroe1234);
+        }*/
         else if (activeSceneIndex == 7)
-        {
-            UnityEngine.Debug.Log("AKITFF OUUU");
+        {            
+
+
+
+            int scoreku = PlayerPrefs.GetInt("ScoreLevel55", 0);
+            /*int scoreBoss = PlayerPrefs.GetInt("ScoreNextBoss", 0);*/
+            UnityEngine.Debug.Log("SCOREKUUU: " + ScoreLevel55);
             SaveLevelCompletion(5);
             int totalscore = ScoreLevel44 + ScoreManager.instance.GetScore();
-            PlayerPrefs.SetInt("ScoreLevel55", totalscore); // Simpan skor ke PlayerPrefs
+            int scoreAwal = ScoreManager.instance.GetScore();
+            PlayerPrefs.SetInt("ScoreNextBoss", totalscore);           
+            if(totalscore > scoreku)
+            {                
+                PlayerPrefs.SetInt("ScoreLevel55", totalscore); // Simpan skor ke PlayerPrefs            
+            }
+            else if(totalscore == scoreku)
+            {                
+                PlayerPrefs.SetInt("ScoreLevel55", totalscore); // Simpan skor ke PlayerPrefs            
+            }
             ScoreLevel55 = PlayerPrefs.GetInt("ScoreLevel55", 0); // Dapatkan skor dari PlayerPrefs
             UnityEngine.Debug.Log("INI level 5");
         }

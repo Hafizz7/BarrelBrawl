@@ -2006,6 +2006,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePause: {fileID: 797572454}
+  GameComplate: {fileID: 150514160}
+  GameOverr: {fileID: 884443952}
   lastCheckPointPos: {x: -12.14, y: -2.7}
 --- !u!224 &861691770
 RectTransform:
