@@ -3510,9 +3510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 658213443}
-  countDown: 100
+  countDown: 110
   bonusScorePerSecond: 10
-  spedd: 30
+  spedd: 40
   health: {fileID: 375158444}
   gameAkhir: 0
 --- !u!114 &658213443
